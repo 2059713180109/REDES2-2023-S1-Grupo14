@@ -1,8 +1,12 @@
+!--- *********************************************************************
+!--- CONFIGURACION DE VTP SERVER/CLIENTE Y PUERTOS TRUNCALES
+!--- *********************************************************************
+
 !--- ===================================== SW1
 
 ENABLE
 CONFIGURE TERMINAL
-	VTP MODE SERVER
+	VTP MODE CLIENT
 	VTP VERSION 1
 	VTP DOMAIN G5
 	VTP PASSWORD G5 
@@ -25,7 +29,7 @@ copy running-config startup-config
 !--- ===================================== SW2
 ENABLE
 CONFIGURE TERMINAL
-	VTP MODE CLIENT
+	VTP MODE SERVER
 	VTP VERSION 1
 	VTP DOMAIN G5
 	VTP PASSWORD G5
@@ -56,9 +60,10 @@ copy running-config startup-config
 
 CONFIGURE TERMINAL 
 	INTERFACE RANGE FASTETHERNET 0/1-9
-	SWITCHPORT MODE TRUNK
-	SWITCHPORT TRUNK ALLOWED VLAN ALL
-	no shutdown 
+		SWITCHPORT MODE TRUNK
+		SWITCHPORT TRUNK ALLOWED VLAN ALL
+		no shutdown 
+	EXIT
 EXIT
 copy running-config startup-config 
 
@@ -75,9 +80,10 @@ copy running-config startup-config
 
 CONFIGURE TERMINAL 
 	INTERFACE RANGE FASTETHERNET 0/1-9
-	SWITCHPORT MODE TRUNK
-	SWITCHPORT TRUNK ALLOWED VLAN ALL
-	no shutdown 
+		SWITCHPORT MODE TRUNK
+		SWITCHPORT TRUNK ALLOWED VLAN ALL
+		no shutdown 
+	EXIT
 EXIT
 copy running-config startup-config 
 
@@ -94,9 +100,28 @@ copy running-config startup-config
 
 CONFIGURE TERMINAL 
 	INTERFACE RANGE FASTETHERNET 0/1-9
-	SWITCHPORT MODE TRUNK
-	SWITCHPORT TRUNK ALLOWED VLAN ALL
-	no shutdown 
+		SWITCHPORT MODE TRUNK
+		SWITCHPORT TRUNK ALLOWED VLAN ALL
+		no shutdown 
+	EXIT
 EXIT
 copy running-config startup-config 
+
+
+
+
+!--- *********************************************************************
+!--- CONFIGURACION DE VLAN
+!--- *********************************************************************
+
+
+
+
+!--- *********************************************************************
+!--- OTROS COMANDOS
+!--- *********************************************************************
+
+SHOW RUNNING-CONFIG
+SHOW VTP STATUS
+show spanning-tree
 
