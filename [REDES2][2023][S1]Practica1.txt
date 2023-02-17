@@ -135,6 +135,75 @@ copy running-config startup-config
 
 
 !--- *********************************************************************
+!--- AGREGAMOS LOS PUERTOS ACCESO A LOS ROUTERS
+!--- *********************************************************************
+
+!--- ===================================== SW1
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 15
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW2
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE RANGE FASTETHERNET 0/10-11
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 35
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+!--- ===================================== SW3
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 35
+		EXIT
+	INTERFACE FASTETHERNET 0/11
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 15
+		EXIT
+	INTERFACE FASTETHERNET 0/12
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 25
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+!--- ===================================== SW4
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 15
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+!--- ===================================== SW5
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE RANGE FASTETHERNET 0/10-11
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 25
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- *********************************************************************
 !--- OTROS COMANDOS
 !--- *********************************************************************
 
