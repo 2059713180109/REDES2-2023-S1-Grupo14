@@ -243,6 +243,105 @@ CONFIGURE TERMINAL
 	EXIT
 copy running-config startup-config 
 
+
+!--- *********************************************************************
+!--- PORT SECURITY
+!--- *********************************************************************
+
+!--- ===================================== SW1
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0003.E4EE.1543
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW2
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 00E0.F7D0.487C
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/11
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0090.2B93.3C42
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW3
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 00D0.BCB1.B87A
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/11
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0001.C790.672C
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/12
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0004.9A12.659C
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW4
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0001.C949.000C
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+
+!--- ===================================== SW5
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0001.4300.4953
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/11
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 00D0.978C.AABC
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+
 !--- *********************************************************************
 !--- OTROS COMANDOS
 !--- *********************************************************************
