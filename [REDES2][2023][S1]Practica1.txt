@@ -116,6 +116,23 @@ copy running-config startup-config
 
 
 
+!--- ===================================== SW2
+
+ENABLE
+CONFIGURE TERMINAL
+	VLAN 15
+		NAME PRIMARIA15
+		EXIT
+	VLAN 25
+		NAME BASICOS25
+		EXIT
+	VLAN 35
+		NAME DIVERSIFICADO25
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
 
 !--- *********************************************************************
 !--- OTROS COMANDOS
