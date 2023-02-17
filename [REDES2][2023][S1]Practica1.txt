@@ -203,6 +203,46 @@ CONFIGURE TERMINAL
 	EXIT
 copy running-config startup-config 
 
+
+
+
+!--- *********************************************************************
+!--- RAPID SPANNING-TREE
+!--- *********************************************************************
+
+
+!--- ===================================== SW1
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+!--- ===================================== SW2
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW3
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+!--- ===================================== SW4
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+!--- ===================================== SW5
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+
 !--- *********************************************************************
 !--- OTROS COMANDOS
 !--- *********************************************************************
