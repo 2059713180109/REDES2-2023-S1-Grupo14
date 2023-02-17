@@ -1,0 +1,352 @@
+!--- *********************************************************************
+!--- CONFIGURACION DE VTP SERVER/CLIENTE Y PUERTOS TRUNCALES
+!--- *********************************************************************
+
+!--- ===================================== SW1
+
+ENABLE
+CONFIGURE TERMINAL
+	VTP MODE CLIENT
+	VTP VERSION 1
+	VTP DOMAIN G5
+	VTP PASSWORD G5 
+EXIT
+
+copy running-config startup-config
+
+CONFIGURE TERMINAL 
+	INTERFACE RANGE FASTETHERNET 0/1-9
+		SWITCHPORT MODE TRUNK
+		SWITCHPORT TRUNK ALLOWED VLAN ALL 
+		no shutdown 
+	EXIT
+EXIT
+
+copy running-config startup-config 
+
+
+
+!--- ===================================== SW2
+ENABLE
+CONFIGURE TERMINAL
+	VTP MODE SERVER
+	VTP VERSION 1
+	VTP DOMAIN G5
+	VTP PASSWORD G5
+EXIT
+
+copy running-config startup-config 
+
+CONFIGURE TERMINAL 
+	INTERFACE RANGE FASTETHERNET 0/1-9
+		SWITCHPORT MODE TRUNK
+		SWITCHPORT TRUNK ALLOWED VLAN ALL
+		no shutdown 
+	EXIT
+EXIT
+
+copy running-config startup-config 
+
+!--- ===================================== SW3
+ENABLE
+CONFIGURE TERMINAL
+	VTP MODE CLIENT
+	VTP VERSION 1
+	VTP DOMAIN G5
+	VTP PASSWORD G5
+	no shutdown 
+EXIT
+copy running-config startup-config 
+
+CONFIGURE TERMINAL 
+	INTERFACE RANGE FASTETHERNET 0/1-9
+		SWITCHPORT MODE TRUNK
+		SWITCHPORT TRUNK ALLOWED VLAN ALL
+		no shutdown 
+	EXIT
+EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW4
+ENABLE
+CONFIGURE TERMINAL
+	VTP MODE CLIENT
+	VTP VERSION 1
+	VTP DOMAIN G5
+	VTP PASSWORD G5
+	no shutdown 
+EXIT
+copy running-config startup-config 
+
+CONFIGURE TERMINAL 
+	INTERFACE RANGE FASTETHERNET 0/1-9
+		SWITCHPORT MODE TRUNK
+		SWITCHPORT TRUNK ALLOWED VLAN ALL
+		no shutdown 
+	EXIT
+EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW5
+ENABLE
+CONFIGURE TERMINAL
+	VTP MODE CLIENT
+	VTP VERSION 1
+	VTP DOMAIN G5
+	VTP PASSWORD G5
+	no shutdown 
+EXIT
+copy running-config startup-config 
+
+CONFIGURE TERMINAL 
+	INTERFACE RANGE FASTETHERNET 0/1-9
+		SWITCHPORT MODE TRUNK
+		SWITCHPORT TRUNK ALLOWED VLAN ALL
+		no shutdown 
+	EXIT
+EXIT
+copy running-config startup-config 
+
+
+
+
+!--- *********************************************************************
+!--- CONFIGURACION DE VLAN
+!--- *********************************************************************
+
+
+
+!--- ===================================== SW2
+
+ENABLE
+CONFIGURE TERMINAL
+	VLAN 15
+		NAME PRIMARIA15
+		EXIT
+	VLAN 25
+		NAME BASICOS25
+		EXIT
+	VLAN 35
+		NAME DIVERSIFICADO25
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+
+!--- *********************************************************************
+!--- AGREGAMOS LOS PUERTOS ACCESO A LOS ROUTERS
+!--- *********************************************************************
+
+!--- ===================================== SW1
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 15
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW2
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE RANGE FASTETHERNET 0/10-11
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 35
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+!--- ===================================== SW3
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 35
+		EXIT
+	INTERFACE FASTETHERNET 0/11
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 15
+		EXIT
+	INTERFACE FASTETHERNET 0/12
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 25
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+!--- ===================================== SW4
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 15
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+!--- ===================================== SW5
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE RANGE FASTETHERNET 0/10-11
+		SWITCHPORT MODE ACCESS
+		SWITCHPORT ACCESS VLAN 25
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+
+
+!--- *********************************************************************
+!--- RAPID SPANNING-TREE
+!--- *********************************************************************
+
+
+!--- ===================================== SW1
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+!--- ===================================== SW2
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW3
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+!--- ===================================== SW4
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+!--- ===================================== SW5
+ENABLE
+CONFIGURE TERMINAL
+	SPANNING-TREE MODE RAPID-PVST
+	EXIT
+copy running-config startup-config 
+
+
+!--- *********************************************************************
+!--- PORT SECURITY
+!--- *********************************************************************
+
+!--- ===================================== SW1
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0003.E4EE.1543
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW2
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 00E0.F7D0.487C
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/11
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0090.2B93.3C42
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW3
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 00D0.BCB1.B87A
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/11
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0001.C790.672C
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/12
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0004.9A12.659C
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+!--- ===================================== SW4
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0001.C949.000C
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+
+!--- ===================================== SW5
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/10
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 0001.4300.4953
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+ENABLE
+CONFIGURE TERMINAL
+	INTERFACE FASTETHERNET 0/11
+		SWITCHPORT PORT-SECURITY
+		SWITCHPORT PORT-SECURITY MAC-ADDRESS 00D0.978C.AABC
+		EXIT
+	EXIT
+copy running-config startup-config 
+
+
+
+!--- *********************************************************************
+!--- OTROS COMANDOS
+!--- *********************************************************************
+
+SHOW RUNNING-CONFIG
+SHOW VTP STATUS
+show spanning-tree
+
